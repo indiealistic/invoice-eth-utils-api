@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node app"
+    "start": "node app/index.js"
   },
   "dependencies": {
     "ethereum-input-data-decoder": "^0.3.1",

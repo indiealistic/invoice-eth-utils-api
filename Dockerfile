@@ -17,6 +17,8 @@ COPY package.json pnpm-lock.* ./
 RUN curl -sL https://unpkg.com/@pnpm/self-installer | node
 RUN pnpm install
 
+COPY . ./
+
 # ---------------
 
 # Create a second-stage which copies the /dist folder
