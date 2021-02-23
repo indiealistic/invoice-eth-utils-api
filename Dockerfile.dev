@@ -6,11 +6,10 @@ RUN mkdir ${APP_ROOT}
 WORKDIR ${APP_ROOT}
 ADD . ${APP_ROOT}
 
-RUN curl -sL https://unpkg.com/@pnpm/self-installer | node
-RUN pnpm install
+RUN yarn install
 
 ENV HOST 0.0.0.0
 
 EXPOSE 3000
 
-CMD pnpm run start
+CMD [ "yarn", "start" ]

@@ -13,11 +13,10 @@ WORKDIR /app
 # This is an optimization we can make, as this layer will be
 # cached, meaning that if we don't change the package.json file,
 # this step doesn't need to be performed again
-COPY package.json pnpm-lock.* ./
+COPY package.json yarn.* ./
 
 # Note that we're installing all dependencies, unlike the buildpack
-RUN curl -sL https://unpkg.com/@pnpm/self-installer | node
-RUN pnpm install
+RUN yarn install
 
 COPY . ./
 
@@ -42,4 +41,4 @@ COPY --from=build /app /app
 EXPOSE 3000
 
 # Set the startup command
-CMD pnpm run start
+CMD yarn start
