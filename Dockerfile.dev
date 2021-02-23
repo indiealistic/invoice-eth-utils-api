@@ -1,0 +1,16 @@
+FROM node:12
+
+ENV APP_ROOT /app
+
+RUN mkdir ${APP_ROOT}
+WORKDIR ${APP_ROOT}
+ADD . ${APP_ROOT}
+
+RUN curl -sL https://unpkg.com/@pnpm/self-installer | node
+RUN pnpm install
+
+ENV HOST 0.0.0.0
+
+EXPOSE 3000
+
+CMD [ "node", "index.js" ]
