@@ -1,5 +1,7 @@
 # Use Node 10
-FROM node:12-alpine AS build
+FROM node:14-alpine AS build
+
+ENV NODE_ENV production
 
 # Create a folder for our app
 RUN mkdir /app
@@ -23,7 +25,9 @@ COPY . ./
 
 # Create a second-stage which copies the /dist folder
 # and uses http-server to host the application
-FROM node:12-alpine
+FROM node:14-alpine
+
+ENV NODE_ENV production
 
 # Create an app folder
 RUN mkdir /app

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eth-utils-api
+  namespace: invoice-indie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eth-utils-api
+  template:
+    metadata:
+      labels:
+        app: eth-utils-api
+    spec:
+      containers:
+        - name: eth-utils-api
+          image: <IMAGE>
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 40
+            periodSeconds: 30
+            timeoutSeconds: 3 # can be much less
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 20 # app specific
+            periodSeconds: 30
+            timeoutSeconds: 3 # can be much less
+      imagePullSecrets:
+        - name: regcred
