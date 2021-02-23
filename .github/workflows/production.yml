@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_PATH: invoiceindie/eth-utils-api
+  IMAGE_PATH: indiealistic/invoice-eth-utils-api
   K8S_NAMESPACE: invoice-indie
   K8S_DEPLOYMENT: eth-utils-api
 
